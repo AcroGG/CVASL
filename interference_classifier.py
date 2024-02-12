@@ -15,7 +15,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
 
-labels_dict = {0: 'A', 1: 'B', 2: 'L'}
+labels_dict = {0: 'A', 1: 'B', 2: 'L'} # update to include the entire library or small phrases.
 while True:
 
     data_aux = []
@@ -62,7 +62,7 @@ while True:
 
         predicted_character = labels_dict[int(prediction[0])]
 
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4)
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 4) # remove rectangle 
         cv2.putText(frame, predicted_character, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 0, 0), 3,
                     cv2.LINE_AA)
 
