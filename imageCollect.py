@@ -8,7 +8,7 @@ if not os.path.exists(Data_Dir):
 num_classes = 3
 data_size = 100
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 for j in range(num_classes):
     if not os.path.exists(os.path.join(Data_Dir, str(j))):
