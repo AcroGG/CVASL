@@ -5,7 +5,7 @@ Data_Dir = './archive'
 if not os.path.exists(Data_Dir):
     os.makedirs(Data_Dir)
 
-num_classes = 3 # update to include the entire library or small phrases. 
+num_classes = 4 # update to include the entire library or small phrases. 
 data_size = 100 
 
 cap = cv2.VideoCapture(0)

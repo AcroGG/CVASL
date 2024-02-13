@@ -4,6 +4,15 @@ import mediapipe as mp
 import cv2
 import matplotlib.pyplot as plt
 
+# Can only handle one hand at a time adding two creates a value error for the model
+# it is expecting one hand of 42 features 2 hands creates 84 features which the model is not expecting
+# adding two hands on image entry also creates this error but wont let you run the model due to the array to be trained
+# has an inhomogeneous shape after 1 demensions the detected shape is (400,) + inhomogeneous part
+# which creates value error. 
+
+# Must update create data to be able to handle two hands at once.
+# Or get the model to be able to ingnore the inhomogeneous shaped array in the data pickle file. 
+
 hands = mp.solutions.hands
 drawing = mp.solutions.drawing_utils
 drawing_styles = mp.solutions.drawing_styles
