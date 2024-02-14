@@ -1,6 +1,21 @@
 import os
 import cv2
 
+
+#1. Data Image Collection
+#2. Data Processing
+#     a. processing and choosing only our hands. Adding data landmarks
+#     b. Saving this data pickling? dill? json? numpy.save?
+#3. Training our model
+#    a. using the saved byte data and numpy arrays train using tensor flow? scikit?
+#    b. save model into another byte format to save from retraining over and over saving resources and time. 
+#4. Sign Language classifier
+#    a. actually showing our model works live 
+#    b. import the saved model data to match with our labels 
+#   c. draw hand landmarks/outline
+#4. Data Addition
+#    a. create a script that can append data into the data archive as a new and last folder instead of having to do all the hand signals again handling new phrases or letters.
+
 Data_Dir = './archive'
 if not os.path.exists(Data_Dir):
     os.makedirs(Data_Dir)
