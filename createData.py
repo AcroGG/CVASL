@@ -3,7 +3,9 @@ import pickle
 import mediapipe as mp
 import cv2
 import matplotlib.pyplot as plt
-
+from mediapipe.tasks import python
+from mediapipe.tasks.python import vision
+from mediapipe.python.solutions.drawing_utils import draw_landmarks_on_image
 # Can only handle one hand at a time adding two creates a value error for the model
 # it is expecting one hand of 42 features 2 hands creates 84 features which the model is not expecting
 # adding two hands on image entry also creates this error but wont let you run the model due to the array to be trained
@@ -12,12 +14,15 @@ import matplotlib.pyplot as plt
 
 # Must update create data to be able to handle two hands at once.
 # Or get the model to be able to ingnore the inhomogeneous shaped array in the data pickle file. 
-
+base = python.BaseOptions(model_asset_path='hand_landmarker.task')
+options = vision.HandLandmarkerOptions(base_options=base, num_hands=2)
+detector = vision.HandLandmarker.create_from_options(options)
 hands = mp.solutions.hands
+
 drawing = mp.solutions.drawing_utils
 drawing_styles = mp.solutions.drawing_styles
 
-hands = hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
+hands = hands.Hands(static_image_mode=False, max_num_hands = 2, min_detection_confidence=0.3)
 
 Data_Dir = './archive'
 
